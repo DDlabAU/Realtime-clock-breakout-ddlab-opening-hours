@@ -26,14 +26,18 @@ void setup()
  // RTC.adjust(DateTime(__DATE__, __TIME__));
 }
 
-int mandag=[9,15];
-//int tirsdag[]
+//Åbningstider:
+int mandag[2]={9,15};
+int tirsdag[2]={9,17};
+int onsdag[2]={10,14};
+int torsdag[2]={12,17};
+int fredag[2]={11,15};
 
 void loop()
 {
 	DateTime now = RTC.now();
 
-	weekDay = now.dayOfWeek();
+	weekDay = now.dayOfTheWeek();
 	currentHour = now.hour();
 	currentMinute = now.minute();
   	Serial.println(weekDay);
@@ -53,7 +57,7 @@ void loop()
 
 	    case 2:
         Serial.println("Tirsdag");
-	    if (currentHour>=9 && currentHour<15)
+	    if (currentHour>=tirsdag[0] && currentHour<tirsdag[1])
 	    {
 	      digitalWrite(buttonPin, HIGH);
 	    }
@@ -62,8 +66,8 @@ void loop()
 	    break;
 
 	    case 3:
-        Serial.println("Tirsdag");
-	    if (currentHour>=10 && currentHour<14)
+        Serial.println("Onsdag");
+	    if (currentHour>=onsdag[0] && currentHour<onsdag[1])
 	    {
 	      digitalWrite(buttonPin, HIGH);
 	    }
@@ -73,7 +77,7 @@ void loop()
 
 	    case 4:
         Serial.println("Torsdag");
-	    if (currentHour>=9 && currentHour<17)
+	    if (currentHour>=torsdag[0] && currentHour<torsdag[1])
 	      {
 	        digitalWrite(buttonPin, HIGH);
 	      }
@@ -83,7 +87,7 @@ void loop()
 
 	    case 5:
       	Serial.println("Fredag");
-	      if (currentHour>=9 && currentHour<15)
+	      if (currentHour>=fredag[0] && currentHour<fredag[1])
 	    {
 	      digitalWrite(buttonPin, HIGH);
 	    }
