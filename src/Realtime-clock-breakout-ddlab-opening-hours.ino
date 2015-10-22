@@ -17,15 +17,17 @@ void setup()
   Serial.begin(57600);
     Wire.begin();
     RTC.begin();
- 
+
   if (! RTC.isrunning()) {
     Serial.println("RTC is NOT running!");
     // following line sets the RTC to the date & time this sketch was compiled
     RTC.adjust(DateTime(__DATE__, __TIME__));
-  }     
+  }
  // RTC.adjust(DateTime(__DATE__, __TIME__));
 }
 
+int mandag=[9,15];
+//int tirsdag[]
 
 void loop()
 {
@@ -37,18 +39,18 @@ void loop()
   	Serial.println(weekDay);
   	Serial.println(currentHour);
   	Serial.println(currentMinute);
-	switch (weekDay) 
+	switch (weekDay)
 	{
 	    case 1:
         Serial.println("Mandag");
-	    if (currentHour>=9 && currentHour<15)
+	    if (currentHour>=mandag[0] && currentHour<mandag[1])
 	    {
 	      digitalWrite(buttonPin, HIGH);
 	    }
 	    else
 	      digitalWrite(buttonPin, LOW);
 	    break;
-	    
+
 	    case 2:
         Serial.println("Tirsdag");
 	    if (currentHour>=9 && currentHour<15)
@@ -58,7 +60,7 @@ void loop()
 	    else
 	      digitalWrite(buttonPin, LOW);
 	    break;
-	    
+
 	    case 3:
         Serial.println("Tirsdag");
 	    if (currentHour>=10 && currentHour<14)
@@ -68,7 +70,7 @@ void loop()
 	    else
 	      digitalWrite(buttonPin, LOW);
 	    break;
-	    
+
 	    case 4:
         Serial.println("Torsdag");
 	    if (currentHour>=9 && currentHour<17)
@@ -78,7 +80,7 @@ void loop()
 	    else
 	      digitalWrite(buttonPin, LOW);
 	    break;
-	    
+
 	    case 5:
       	Serial.println("Fredag");
 	      if (currentHour>=9 && currentHour<15)
@@ -87,9 +89,9 @@ void loop()
 	    }
 	    else
 	      digitalWrite(buttonPin, LOW);
-	    break;  
+	    break;
 
-	    default: 
+	    default:
 	    digitalWrite(buttonPin, LOW);
 	}
 }
