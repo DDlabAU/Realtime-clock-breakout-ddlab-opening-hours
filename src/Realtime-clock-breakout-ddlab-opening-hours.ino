@@ -28,12 +28,12 @@ void setup()
 
 }
 
-//Åbningstider:
-int mandag[2]={9,15};
-int tirsdag[2]={9,17};
-int onsdag[2]={10,14};
-int torsdag[2]={12,17};
-int fredag[2]={11,16};
+//Åbningstider F16:
+int mandag[2]={9,14};
+int tirsdag[2]={10,16};
+int onsdag[2]={10,17};
+int torsdag[2]={9,16};
+int fredag[2]={9,15};
 
 void loop()
 {
@@ -43,6 +43,7 @@ void loop()
 	weekDay = now.dayOfTheWeek();
 	currentHour = now.hour();
 	currentMinute = now.minute();
+
   	Serial.println(weekDay);
   	Serial.println(currentHour);
   	Serial.println(currentMinute);
